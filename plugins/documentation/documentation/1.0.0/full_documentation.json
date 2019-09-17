@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "12/24/2018 3:35:56 PM"
+    "x-generation-date": "09/17/2019 4:50:56 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -44,7 +44,7 @@
     }
   ],
   "paths": {
-    "/posts": {
+    "/backgrounds": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -56,7 +56,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Post"
+                    "$ref": "#/components/schemas/Background"
                   }
                 }
               }
@@ -95,7 +95,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "parameters": [
           {
@@ -219,7 +219,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Background"
                 }
               }
             }
@@ -257,7 +257,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "requestBody": {
           "description": "",
@@ -265,14 +265,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewBackground"
               }
             }
           }
         }
       }
     },
-    "/posts/count": {
+    "/backgrounds/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -324,12 +324,12 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "parameters": []
       }
     },
-    "/posts/{_id}": {
+    "/backgrounds/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -339,7 +339,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Background"
                 }
               }
             }
@@ -377,7 +377,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "parameters": [
           {
@@ -401,7 +401,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Background"
                 }
               }
             }
@@ -439,7 +439,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "requestBody": {
           "description": "",
@@ -447,7 +447,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewBackground"
               }
             }
           }
@@ -513,7 +513,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "parameters": [
           {
@@ -529,7 +529,7 @@
         ]
       }
     },
-    "/tags": {
+    "/pages": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -541,7 +541,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Tag"
+                    "$ref": "#/components/schemas/Page"
                   }
                 }
               }
@@ -580,7 +580,7 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "parameters": [
           {
@@ -704,7 +704,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tag"
+                  "$ref": "#/components/schemas/Page"
                 }
               }
             }
@@ -742,7 +742,7 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "requestBody": {
           "description": "",
@@ -750,14 +750,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTag"
+                "$ref": "#/components/schemas/NewPage"
               }
             }
           }
         }
       }
     },
-    "/tags/count": {
+    "/pages/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -809,12 +809,12 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "parameters": []
       }
     },
-    "/tags/{_id}": {
+    "/pages/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -824,7 +824,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tag"
+                  "$ref": "#/components/schemas/Page"
                 }
               }
             }
@@ -862,7 +862,7 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "parameters": [
           {
@@ -886,7 +886,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tag"
+                  "$ref": "#/components/schemas/Page"
                 }
               }
             }
@@ -924,7 +924,7 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "requestBody": {
           "description": "",
@@ -932,7 +932,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTag"
+                "$ref": "#/components/schemas/NewPage"
               }
             }
           }
@@ -998,7 +998,7 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "parameters": [
           {
@@ -3030,23 +3030,16 @@
   },
   "components": {
     "schemas": {
-      "Post": {
+      "Background": {
         "required": [
-          "id"
+          "id",
+          "Image"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "title": {
-            "type": "string",
-            "default": ""
-          },
-          "content": {
-            "type": "string",
-            "default": ""
-          },
-          "cover": {
+          "Image": {
             "required": [
               "id",
               "name",
@@ -3092,7 +3085,7 @@
               }
             }
           },
-          "tags": {
+          "pages": {
             "type": "array",
             "items": {
               "required": [
@@ -3102,10 +3095,10 @@
                 "id": {
                   "type": "string"
                 },
-                "name": {
+                "Nom": {
                   "type": "string"
                 },
-                "posts": {
+                "backgrounds": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -3116,17 +3109,9 @@
           }
         }
       },
-      "NewPost": {
+      "NewBackground": {
         "properties": {
-          "title": {
-            "type": "string",
-            "default": ""
-          },
-          "content": {
-            "type": "string",
-            "default": ""
-          },
-          "tags": {
+          "pages": {
             "type": "array",
             "items": {
               "type": "string"
@@ -3134,7 +3119,7 @@
           }
         }
       },
-      "Tag": {
+      "Page": {
         "required": [
           "id"
         ],
@@ -3142,30 +3127,25 @@
           "id": {
             "type": "string"
           },
-          "name": {
+          "Nom": {
             "type": "string",
             "default": ""
           },
-          "posts": {
+          "backgrounds": {
             "type": "array",
             "items": {
               "required": [
-                "id"
+                "id",
+                "Image"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "title": {
+                "Image": {
                   "type": "string"
                 },
-                "content": {
-                  "type": "string"
-                },
-                "cover": {
-                  "type": "string"
-                },
-                "tags": {
+                "pages": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -3176,13 +3156,13 @@
           }
         }
       },
-      "NewTag": {
+      "NewPage": {
         "properties": {
-          "name": {
+          "Nom": {
             "type": "string",
             "default": ""
           },
-          "posts": {
+          "backgrounds": {
             "type": "array",
             "items": {
               "type": "string"
@@ -3490,10 +3470,10 @@
   },
   "tags": [
     {
-      "name": "Post"
+      "name": "Background"
     },
     {
-      "name": "Tag"
+      "name": "Page"
     },
     {
       "name": "Email"

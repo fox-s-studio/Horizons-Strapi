@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Post.js service
+ * Page.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -12,21 +12,21 @@ const _ = require('lodash');
 module.exports = {
 
   /**
-   * Promise to fetch all posts.
+   * Promise to fetch all pages.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('post', params);
+    const filters = strapi.utils.models.convertParams('page', params);
     // Select field to populate.
-    const populate = Post.associations
+    const populate = Page.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Post
+    return Page
       .find()
       .where(filters.where)
       .sort(filters.sort)
@@ -36,90 +36,90 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an post.
+   * Promise to fetch a/an page.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Post.associations
+    const populate = Page.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Post
-      .findOne(_.pick(params, _.keys(Post.schema.paths)))
+    return Page
+      .findOne(_.pick(params, _.keys(Page.schema.paths)))
       .populate(populate);
   },
 
   /**
-   * Promise to count posts.
+   * Promise to count pages.
    *
    * @return {Promise}
    */
 
   count: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('post', params);
+    const filters = strapi.utils.models.convertParams('page', params);
 
-    return Post
+    return Page
       .count()
       .where(filters.where);
   },
 
   /**
-   * Promise to add a/an post.
+   * Promise to add a/an page.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Post.associations.map(ast => ast.alias));
-    const data = _.omit(values, Post.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Page.associations.map(ast => ast.alias));
+    const data = _.omit(values, Page.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Post.create(data);
+    const entry = await Page.create(data);
 
     // Create relational data and return the entry.
-    return Post.updateRelations({ _id: entry.id, values: relations });
+    return Page.updateRelations({ _id: entry.id, values: relations });
   },
 
   /**
-   * Promise to edit a/an post.
+   * Promise to edit a/an page.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Post.associations.map(a => a.alias));
-    const data = _.omit(values, Post.associations.map(a => a.alias));
+    const relations = _.pick(values, Page.associations.map(a => a.alias));
+    const data = _.omit(values, Page.associations.map(a => a.alias));
 
     // Update entry with no-relational data.
-    const entry = await Post.update(params, data, { multi: true });
+    const entry = await Page.update(params, data, { multi: true });
 
     // Update relational data and return the entry.
-    return Post.updateRelations(Object.assign(params, { values: relations }));
+    return Page.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an post.
+   * Promise to remove a/an page.
    *
    * @return {Promise}
    */
 
   remove: async params => {
     // Select field to populate.
-    const populate = Post.associations
+    const populate = Page.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
     // Note: To get the full response of Mongo, use the `remove()` method
     // or add spent the parameter `{ passRawResult: true }` as second argument.
-    const data = await Post
+    const data = await Page
       .findOneAndRemove(params, {})
       .populate(populate);
 
@@ -128,7 +128,7 @@ module.exports = {
     }
 
     await Promise.all(
-      Post.associations.map(async association => {
+      Page.associations.map(async association => {
         if (!association.via || !data._id) {
           return true;
         }
@@ -149,22 +149,22 @@ module.exports = {
   },
 
   /**
-   * Promise to search a/an post.
+   * Promise to search a/an page.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('post', params);
+    const filters = strapi.utils.models.convertParams('page', params);
     // Select field to populate.
-    const populate = Post.associations
+    const populate = Page.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    const $or = Object.keys(Post.attributes).reduce((acc, curr) => {
-      switch (Post.attributes[curr].type) {
+    const $or = Object.keys(Page.attributes).reduce((acc, curr) => {
+      switch (Page.attributes[curr].type) {
         case 'integer':
         case 'float':
         case 'decimal':
@@ -188,7 +188,7 @@ module.exports = {
       }
     }, []);
 
-    return Post
+    return Page
       .find({ $or })
       .sort(filters.sort)
       .skip(filters.start)

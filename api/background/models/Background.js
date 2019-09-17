@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `Post` model.
+ * Lifecycle callbacks for the `Background` model.
  */
 
 module.exports = {

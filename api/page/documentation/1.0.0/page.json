@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/tags": {
+    "/pages": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Tag"
+                    "$ref": "#/components/schemas/Page"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "parameters": [
           {
@@ -175,7 +175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tag"
+                  "$ref": "#/components/schemas/Page"
                 }
               }
             }
@@ -213,7 +213,7 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "requestBody": {
           "description": "",
@@ -221,14 +221,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTag"
+                "$ref": "#/components/schemas/NewPage"
               }
             }
           }
         }
       }
     },
-    "/tags/count": {
+    "/pages/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -280,12 +280,12 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "parameters": []
       }
     },
-    "/tags/{_id}": {
+    "/pages/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -295,7 +295,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tag"
+                  "$ref": "#/components/schemas/Page"
                 }
               }
             }
@@ -333,7 +333,7 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "parameters": [
           {
@@ -357,7 +357,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Tag"
+                  "$ref": "#/components/schemas/Page"
                 }
               }
             }
@@ -395,7 +395,7 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "requestBody": {
           "description": "",
@@ -403,7 +403,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewTag"
+                "$ref": "#/components/schemas/NewPage"
               }
             }
           }
@@ -469,7 +469,7 @@
         },
         "summary": "",
         "tags": [
-          "Tag"
+          "Page"
         ],
         "parameters": [
           {
@@ -488,7 +488,7 @@
   },
   "components": {
     "schemas": {
-      "Tag": {
+      "Page": {
         "required": [
           "id"
         ],
@@ -496,30 +496,25 @@
           "id": {
             "type": "string"
           },
-          "name": {
+          "Nom": {
             "type": "string",
             "default": ""
           },
-          "posts": {
+          "backgrounds": {
             "type": "array",
             "items": {
               "required": [
-                "id"
+                "id",
+                "Image"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "title": {
+                "Image": {
                   "type": "string"
                 },
-                "content": {
-                  "type": "string"
-                },
-                "cover": {
-                  "type": "string"
-                },
-                "tags": {
+                "pages": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -530,13 +525,13 @@
           }
         }
       },
-      "NewTag": {
+      "NewPage": {
         "properties": {
-          "name": {
+          "Nom": {
             "type": "string",
             "default": ""
           },
-          "posts": {
+          "backgrounds": {
             "type": "array",
             "items": {
               "type": "string"
@@ -548,7 +543,7 @@
   },
   "tags": [
     {
-      "name": "Tag"
+      "name": "Page"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/posts": {
+    "/backgrounds": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Post"
+                    "$ref": "#/components/schemas/Background"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "parameters": [
           {
@@ -175,7 +175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Background"
                 }
               }
             }
@@ -213,7 +213,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "requestBody": {
           "description": "",
@@ -221,14 +221,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewBackground"
               }
             }
           }
         }
       }
     },
-    "/posts/count": {
+    "/backgrounds/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -280,12 +280,12 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "parameters": []
       }
     },
-    "/posts/{_id}": {
+    "/backgrounds/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -295,7 +295,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Background"
                 }
               }
             }
@@ -333,7 +333,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "parameters": [
           {
@@ -357,7 +357,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Post"
+                  "$ref": "#/components/schemas/Background"
                 }
               }
             }
@@ -395,7 +395,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "requestBody": {
           "description": "",
@@ -403,7 +403,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPost"
+                "$ref": "#/components/schemas/NewBackground"
               }
             }
           }
@@ -469,7 +469,7 @@
         },
         "summary": "",
         "tags": [
-          "Post"
+          "Background"
         ],
         "parameters": [
           {
@@ -488,23 +488,16 @@
   },
   "components": {
     "schemas": {
-      "Post": {
+      "Background": {
         "required": [
-          "id"
+          "id",
+          "Image"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "title": {
-            "type": "string",
-            "default": ""
-          },
-          "content": {
-            "type": "string",
-            "default": ""
-          },
-          "cover": {
+          "Image": {
             "required": [
               "id",
               "name",
@@ -550,7 +543,7 @@
               }
             }
           },
-          "tags": {
+          "pages": {
             "type": "array",
             "items": {
               "required": [
@@ -560,10 +553,10 @@
                 "id": {
                   "type": "string"
                 },
-                "name": {
+                "Nom": {
                   "type": "string"
                 },
-                "posts": {
+                "backgrounds": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -574,17 +567,9 @@
           }
         }
       },
-      "NewPost": {
+      "NewBackground": {
         "properties": {
-          "title": {
-            "type": "string",
-            "default": ""
-          },
-          "content": {
-            "type": "string",
-            "default": ""
-          },
-          "tags": {
+          "pages": {
             "type": "array",
             "items": {
               "type": "string"
@@ -596,7 +581,7 @@
   },
   "tags": [
     {
-      "name": "Post"
+      "name": "Background"
     }
   ]
 }

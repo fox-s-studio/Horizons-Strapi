@@ -1,21 +1,21 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "page",
   "info": {
-    "name": "tag",
+    "name": "page",
     "description": ""
   },
   "options": {
     "timestamps": true
   },
   "attributes": {
-    "name": {
+    "Nom": {
       "default": "",
       "type": "string"
     },
-    "posts": {
-      "collection": "post",
-      "via": "tags",
+    "backgrounds": {
+      "collection": "background",
+      "via": "pages",
       "dominant": true
     }
   }
