@@ -17,8 +17,7 @@
     },
     "pages": {
       "collection": "page",
-      "via": "backgrounds",
-      "dominant": true
-    } 
+      "via": "backgrounds"
+    }
   }
 }
