@@ -501,24 +501,21 @@
             "default": ""
           },
           "backgrounds": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id",
-                "Image"
-              ],
-              "properties": {
-                "id": {
+            "required": [
+              "id",
+              "Image"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Image": {
+                "type": "string"
+              },
+              "pages": {
+                "type": "array",
+                "items": {
                   "type": "string"
-                },
-                "Image": {
-                  "type": "string"
-                },
-                "pages": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
                 }
               }
             }
@@ -532,10 +529,7 @@
             "default": ""
           },
           "backgrounds": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+            "type": "string"
           }
         }
       }

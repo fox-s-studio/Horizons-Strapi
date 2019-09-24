@@ -557,10 +557,7 @@
                   "type": "string"
                 },
                 "backgrounds": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "type": "string"
                 }
               }
             }

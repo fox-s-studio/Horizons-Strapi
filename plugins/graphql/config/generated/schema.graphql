@@ -139,7 +139,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Background | createBackgroundPayload | updateBackgroundPayload | deleteBackgroundPayload | BackgroundConnection | BackgroundAggregator | BackgroundGroupBy | BackgroundConnection_id | BackgroundConnectionCreatedAt | BackgroundConnectionUpdatedAt | BackgroundConnectionImage | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionNom | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Background | createBackgroundPayload | updateBackgroundPayload | deleteBackgroundPayload | BackgroundConnection | BackgroundAggregator | BackgroundGroupBy | BackgroundConnection_id | BackgroundConnectionCreatedAt | BackgroundConnectionUpdatedAt | BackgroundConnectionImage | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionNom | PageConnectionBackgrounds | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createBackground(input: createBackgroundInput): createBackgroundPayload
@@ -168,7 +168,7 @@ type Page {
   createdAt: DateTime!
   updatedAt: DateTime!
   Nom: String
-  backgrounds(sort: String, limit: Int, start: Int, where: JSON): [Background]
+  backgrounds: Background
 }
 
 type PageAggregator {
@@ -182,6 +182,11 @@ type PageConnection {
 }
 
 type PageConnection_id {
+  key: ID
+  connection: PageConnection
+}
+
+type PageConnectionBackgrounds {
   key: ID
   connection: PageConnection
 }
@@ -206,11 +211,12 @@ type PageGroupBy {
   createdAt: [PageConnectionCreatedAt]
   updatedAt: [PageConnectionUpdatedAt]
   Nom: [PageConnectionNom]
+  backgrounds: [PageConnectionBackgrounds]
 }
 
 input PageInput {
   Nom: String
-  backgrounds: [ID]
+  backgrounds: ID
 }
 
 type Query {
