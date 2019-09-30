@@ -2,26 +2,26 @@
   "connection": "default",
   "collectionName": "",
   "info": {
-    "name": "background",
+    "name": "section",
     "description": ""
   },
   "options": {
     "timestamps": true
   },
   "attributes": {
-    "Image": {
+    "Nom": {
+      "default": "",
+      "type": "string"
+    },
+    "background": {
+      "model": "background",
+      "via": "section"
+    },
+    "Logo": {
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": true
-    },
-    "pages": {
-      "collection": "page",
-      "via": "backgrounds"
-    },
-    "section": {
-      "model": "section",
-      "via": "background"
+      "required": false
     }
   }
 }

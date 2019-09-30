@@ -3,6 +3,7 @@ type Background {
   createdAt: DateTime!
   updatedAt: DateTime!
   Image: UploadFile
+  section: Section
   pages(sort: String, limit: Int, start: Int, where: JSON): [Page]
 }
 
@@ -31,6 +32,11 @@ type BackgroundConnectionImage {
   connection: BackgroundConnection
 }
 
+type BackgroundConnectionSection {
+  key: ID
+  connection: BackgroundConnection
+}
+
 type BackgroundConnectionUpdatedAt {
   key: DateTime
   connection: BackgroundConnection
@@ -41,11 +47,13 @@ type BackgroundGroupBy {
   createdAt: [BackgroundConnectionCreatedAt]
   updatedAt: [BackgroundConnectionUpdatedAt]
   Image: [BackgroundConnectionImage]
+  section: [BackgroundConnectionSection]
 }
 
 input BackgroundInput {
   Image: ID
   pages: [ID]
+  section: ID
 }
 
 input createBackgroundInput {
@@ -70,6 +78,14 @@ input createRoleInput {
 
 type createRolePayload {
   role: UsersPermissionsRole
+}
+
+input createSectionInput {
+  data: SectionInput
+}
+
+type createSectionPayload {
+  section: Section
 }
 
 input createUserInput {
@@ -109,6 +125,14 @@ type deleteRolePayload {
   role: UsersPermissionsRole
 }
 
+input deleteSectionInput {
+  where: InputID
+}
+
+type deleteSectionPayload {
+  section: Section
+}
+
 input deleteUserInput {
   where: InputID
 }
@@ -139,7 +163,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Background | createBackgroundPayload | updateBackgroundPayload | deleteBackgroundPayload | BackgroundConnection | BackgroundAggregator | BackgroundGroupBy | BackgroundConnection_id | BackgroundConnectionCreatedAt | BackgroundConnectionUpdatedAt | BackgroundConnectionImage | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionNom | PageConnectionBackgrounds | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Background | createBackgroundPayload | updateBackgroundPayload | deleteBackgroundPayload | BackgroundConnection | BackgroundAggregator | BackgroundGroupBy | BackgroundConnection_id | BackgroundConnectionCreatedAt | BackgroundConnectionUpdatedAt | BackgroundConnectionImage | BackgroundConnectionSection | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionNom | PageConnectionBackgrounds | Section | createSectionPayload | updateSectionPayload | deleteSectionPayload | SectionConnection | SectionAggregator | SectionGroupBy | SectionConnection_id | SectionConnectionCreatedAt | SectionConnectionUpdatedAt | SectionConnectionNom | SectionConnectionBackground | SectionConnectionLogo | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createBackground(input: createBackgroundInput): createBackgroundPayload
@@ -148,6 +172,9 @@ type Mutation {
   createPage(input: createPageInput): createPagePayload
   updatePage(input: updatePageInput): updatePagePayload
   deletePage(input: deletePageInput): deletePagePayload
+  createSection(input: createSectionInput): createSectionPayload
+  updateSection(input: updateSectionInput): updateSectionPayload
+  deleteSection(input: deleteSectionInput): deleteSectionPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -226,6 +253,9 @@ type Query {
   page(id: ID!): Page
   pages(sort: String, limit: Int, start: Int, where: JSON): [Page]
   pagesConnection(sort: String, limit: Int, start: Int, where: JSON): PageConnection
+  section(id: ID!): Section
+  sections(sort: String, limit: Int, start: Int, where: JSON): [Section]
+  sectionsConnection(sort: String, limit: Int, start: Int, where: JSON): SectionConnection
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!): UsersPermissionsRole
@@ -247,6 +277,70 @@ input RoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+type Section {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  Nom: String
+  background: Background
+  Logo: UploadFile
+}
+
+type SectionAggregator {
+  count: Int
+}
+
+type SectionConnection {
+  values: [Section]
+  groupBy: SectionGroupBy
+  aggregate: SectionAggregator
+}
+
+type SectionConnection_id {
+  key: ID
+  connection: SectionConnection
+}
+
+type SectionConnectionBackground {
+  key: ID
+  connection: SectionConnection
+}
+
+type SectionConnectionCreatedAt {
+  key: DateTime
+  connection: SectionConnection
+}
+
+type SectionConnectionLogo {
+  key: ID
+  connection: SectionConnection
+}
+
+type SectionConnectionNom {
+  key: String
+  connection: SectionConnection
+}
+
+type SectionConnectionUpdatedAt {
+  key: DateTime
+  connection: SectionConnection
+}
+
+type SectionGroupBy {
+  _id: [SectionConnection_id]
+  createdAt: [SectionConnectionCreatedAt]
+  updatedAt: [SectionConnectionUpdatedAt]
+  Nom: [SectionConnectionNom]
+  background: [SectionConnectionBackground]
+  Logo: [SectionConnectionLogo]
+}
+
+input SectionInput {
+  Nom: String
+  background: ID
+  Logo: ID
 }
 
 input updateBackgroundInput {
@@ -274,6 +368,15 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
+}
+
+input updateSectionInput {
+  where: InputID
+  data: SectionInput
+}
+
+type updateSectionPayload {
+  section: Section
 }
 
 input updateUserInput {

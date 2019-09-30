@@ -561,6 +561,25 @@
                 }
               }
             }
+          },
+          "section": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Nom": {
+                "type": "string"
+              },
+              "background": {
+                "type": "string"
+              },
+              "Logo": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -571,6 +590,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "section": {
+            "type": "string"
           }
         }
       }
