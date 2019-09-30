@@ -157,10 +157,10 @@ module.exports = {
       return ctx.badRequest(null, 'This provider is disabled.');
     }
 
-    const Grant = require('grant-koa');
-    const grant = new Grant(grantConfig);
-
-    return strapi.koaMiddlewares.compose(grant.middleware)(ctx, next);
+    const grant = require('grant-koa');
+    const g = grant(grantConfig);
+    
+    return g(ctx, next);
   },
 
   forgotPassword: async (ctx) => {
