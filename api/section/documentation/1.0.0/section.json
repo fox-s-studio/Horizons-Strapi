@@ -568,6 +568,31 @@
                 "type": "string"
               }
             }
+          },
+          "articles": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "Titre": {
+                  "type": "string"
+                },
+                "Texte": {
+                  "type": "string"
+                },
+                "Image": {
+                  "type": "string"
+                },
+                "section": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -579,6 +604,12 @@
           },
           "background": {
             "type": "string"
+          },
+          "articles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

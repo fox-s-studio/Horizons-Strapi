@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/backgrounds": {
+    "/articles": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Background"
+                    "$ref": "#/components/schemas/Article"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Background"
+          "Article"
         ],
         "parameters": [
           {
@@ -175,7 +175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Background"
+                  "$ref": "#/components/schemas/Article"
                 }
               }
             }
@@ -213,7 +213,7 @@
         },
         "summary": "",
         "tags": [
-          "Background"
+          "Article"
         ],
         "requestBody": {
           "description": "",
@@ -221,14 +221,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBackground"
+                "$ref": "#/components/schemas/NewArticle"
               }
             }
           }
         }
       }
     },
-    "/backgrounds/count": {
+    "/articles/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -280,12 +280,12 @@
         },
         "summary": "",
         "tags": [
-          "Background"
+          "Article"
         ],
         "parameters": []
       }
     },
-    "/backgrounds/{_id}": {
+    "/articles/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -295,7 +295,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Background"
+                  "$ref": "#/components/schemas/Article"
                 }
               }
             }
@@ -333,7 +333,7 @@
         },
         "summary": "",
         "tags": [
-          "Background"
+          "Article"
         ],
         "parameters": [
           {
@@ -357,7 +357,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Background"
+                  "$ref": "#/components/schemas/Article"
                 }
               }
             }
@@ -395,7 +395,7 @@
         },
         "summary": "",
         "tags": [
-          "Background"
+          "Article"
         ],
         "requestBody": {
           "description": "",
@@ -403,7 +403,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewBackground"
+                "$ref": "#/components/schemas/NewArticle"
               }
             }
           }
@@ -469,7 +469,7 @@
         },
         "summary": "",
         "tags": [
-          "Background"
+          "Article"
         ],
         "parameters": [
           {
@@ -488,14 +488,21 @@
   },
   "components": {
     "schemas": {
-      "Background": {
+      "Article": {
         "required": [
-          "id",
-          "Image"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
+          },
+          "Titre": {
+            "type": "string",
+            "default": ""
+          },
+          "Texte": {
+            "type": "string",
+            "default": ""
           },
           "Image": {
             "required": [
@@ -543,25 +550,6 @@
               }
             }
           },
-          "pages": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "Nom": {
-                  "type": "string"
-                },
-                "backgrounds": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "section": {
             "required": [
               "id"
@@ -589,13 +577,15 @@
           }
         }
       },
-      "NewBackground": {
+      "NewArticle": {
         "properties": {
-          "pages": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "Titre": {
+            "type": "string",
+            "default": ""
+          },
+          "Texte": {
+            "type": "string",
+            "default": ""
           },
           "section": {
             "type": "string"
@@ -606,7 +596,7 @@
   },
   "tags": [
     {
-      "name": "Background"
+      "name": "Article"
     }
   ]
 }

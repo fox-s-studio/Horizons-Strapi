@@ -2,30 +2,30 @@
   "connection": "default",
   "collectionName": "",
   "info": {
-    "name": "section",
+    "name": "article",
     "description": ""
   },
   "options": {
     "timestamps": true
   },
   "attributes": {
-    "Nom": {
+    "Titre": {
       "default": "",
       "type": "string"
     },
-    "background": {
-      "model": "background",
-      "via": "section"
+    "Texte": {
+      "default": "",
+      "type": "text"
     },
-    "Logo": {
+    "Image": {
       "model": "file",
       "via": "related",
       "plugin": "upload",
       "required": false
     },
-    "articles": {
-      "collection": "article",
-      "via": "section"
+    "section": {
+      "model": "section",
+      "via": "articles"
     }
   }
 }
