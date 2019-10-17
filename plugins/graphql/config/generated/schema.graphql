@@ -251,7 +251,7 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Article | createArticlePayload | updateArticlePayload | deleteArticlePayload | ArticleConnection | ArticleAggregator | ArticleGroupBy | ArticleConnection_id | ArticleConnectionCreatedAt | ArticleConnectionUpdatedAt | ArticleConnectionTitre | ArticleConnectionTexte | ArticleConnectionImage | ArticleConnectionSection | Background | createBackgroundPayload | updateBackgroundPayload | deleteBackgroundPayload | BackgroundConnection | BackgroundAggregator | BackgroundGroupBy | BackgroundConnection_id | BackgroundConnectionCreatedAt | BackgroundConnectionUpdatedAt | BackgroundConnectionImage | BackgroundConnectionSection | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionNom | PageConnectionBackgrounds | Section | createSectionPayload | updateSectionPayload | deleteSectionPayload | SectionConnection | SectionAggregator | SectionGroupBy | SectionConnection_id | SectionConnectionCreatedAt | SectionConnectionUpdatedAt | SectionConnectionNom | SectionConnectionBackground | SectionConnectionLogo | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Article | createArticlePayload | updateArticlePayload | deleteArticlePayload | ArticleConnection | ArticleAggregator | ArticleGroupBy | ArticleConnection_id | ArticleConnectionCreatedAt | ArticleConnectionUpdatedAt | ArticleConnectionTitre | ArticleConnectionTexte | ArticleConnectionImage | ArticleConnectionSection | Background | createBackgroundPayload | updateBackgroundPayload | deleteBackgroundPayload | BackgroundConnection | BackgroundAggregator | BackgroundGroupBy | BackgroundConnection_id | BackgroundConnectionCreatedAt | BackgroundConnectionUpdatedAt | BackgroundConnectionImage | BackgroundConnectionSection | Page | createPagePayload | updatePagePayload | deletePagePayload | PageConnection | PageAggregator | PageGroupBy | PageConnection_id | PageConnectionCreatedAt | PageConnectionUpdatedAt | PageConnectionNom | PageConnectionBackgrounds | Section | createSectionPayload | updateSectionPayload | deleteSectionPayload | SectionConnection | SectionAggregator | SectionGroupBy | SectionConnection_id | SectionConnectionCreatedAt | SectionConnectionUpdatedAt | SectionConnectionNom | SectionConnectionBackground | SectionConnectionLogo | SectionConnectionTitre | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
   createArticle(input: createArticleInput): createArticlePayload
@@ -380,6 +380,7 @@ type Section {
   Nom: String
   background: Background
   Logo: UploadFile
+  Titre: String
   articles(sort: String, limit: Int, start: Int, where: JSON): [Article]
 }
 
@@ -418,6 +419,11 @@ type SectionConnectionNom {
   connection: SectionConnection
 }
 
+type SectionConnectionTitre {
+  key: String
+  connection: SectionConnection
+}
+
 type SectionConnectionUpdatedAt {
   key: DateTime
   connection: SectionConnection
@@ -430,6 +436,7 @@ type SectionGroupBy {
   Nom: [SectionConnectionNom]
   background: [SectionConnectionBackground]
   Logo: [SectionConnectionLogo]
+  Titre: [SectionConnectionTitre]
 }
 
 input SectionInput {
@@ -437,6 +444,7 @@ input SectionInput {
   background: ID
   Logo: ID
   articles: [ID]
+  Titre: String
 }
 
 input updateArticleInput {

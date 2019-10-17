@@ -584,6 +584,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "Titre": {
+                "type": "string"
               }
             }
           }

@@ -593,6 +593,10 @@
                 }
               }
             }
+          },
+          "Titre": {
+            "type": "string",
+            "default": ""
           }
         }
       },
@@ -610,6 +614,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "Titre": {
+            "type": "string",
+            "default": ""
           }
         }
       }

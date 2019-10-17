@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "section",
   "info": {
     "name": "section",
     "description": ""
@@ -26,6 +26,10 @@
     "articles": {
       "collection": "article",
       "via": "section"
+    },
+    "Titre": {
+      "default": "",
+      "type": "string"
     }
   }
 }
