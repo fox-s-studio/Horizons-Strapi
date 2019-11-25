@@ -579,14 +579,20 @@
               "Logo": {
                 "type": "string"
               },
-              "articles": {
+              "Titre": {
+                "type": "string"
+              },
+              "news": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
-              "Titre": {
-                "type": "string"
+              "evenements": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }

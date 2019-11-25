@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/articles": {
+    "/evenements": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Article"
+                    "$ref": "#/components/schemas/Evenement"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Evenement"
         ],
         "parameters": [
           {
@@ -175,7 +175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Evenement"
                 }
               }
             }
@@ -213,7 +213,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Evenement"
         ],
         "requestBody": {
           "description": "",
@@ -221,14 +221,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewArticle"
+                "$ref": "#/components/schemas/NewEvenement"
               }
             }
           }
         }
       }
     },
-    "/articles/count": {
+    "/evenements/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -280,12 +280,12 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Evenement"
         ],
         "parameters": []
       }
     },
-    "/articles/{_id}": {
+    "/evenements/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -295,7 +295,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Evenement"
                 }
               }
             }
@@ -333,7 +333,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Evenement"
         ],
         "parameters": [
           {
@@ -357,7 +357,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Article"
+                  "$ref": "#/components/schemas/Evenement"
                 }
               }
             }
@@ -395,7 +395,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Evenement"
         ],
         "requestBody": {
           "description": "",
@@ -403,7 +403,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewArticle"
+                "$ref": "#/components/schemas/NewEvenement"
               }
             }
           }
@@ -469,7 +469,7 @@
         },
         "summary": "",
         "tags": [
-          "Article"
+          "Evenement"
         ],
         "parameters": [
           {
@@ -488,7 +488,7 @@
   },
   "components": {
     "schemas": {
-      "Article": {
+      "Evenement": {
         "required": [
           "id"
         ],
@@ -500,7 +500,7 @@
             "type": "string",
             "default": ""
           },
-          "Texte": {
+          "Description": {
             "type": "string",
             "default": ""
           },
@@ -567,26 +567,32 @@
               "Logo": {
                 "type": "string"
               },
-              "articles": {
+              "Titre": {
+                "type": "string"
+              },
+              "news": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
-              "Titre": {
-                "type": "string"
+              "evenements": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }
         }
       },
-      "NewArticle": {
+      "NewEvenement": {
         "properties": {
           "Titre": {
             "type": "string",
             "default": ""
           },
-          "Texte": {
+          "Description": {
             "type": "string",
             "default": ""
           },
@@ -599,7 +605,7 @@
   },
   "tags": [
     {
-      "name": "Article"
+      "name": "Evenement"
     }
   ]
 }

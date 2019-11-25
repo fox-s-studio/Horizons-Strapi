@@ -23,13 +23,17 @@
       "plugin": "upload",
       "required": false
     },
-    "articles": {
-      "collection": "article",
-      "via": "section"
-    },
     "Titre": {
       "default": "",
       "type": "string"
+    },
+    "news": {
+      "collection": "new",
+      "via": "section"
+    },
+    "evenements": {
+      "collection": "evenement",
+      "via": "section"
     }
   }
 }

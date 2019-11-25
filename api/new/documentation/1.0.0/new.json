@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/sections": {
+    "/news": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Section"
+                    "$ref": "#/components/schemas/New"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "New"
         ],
         "parameters": [
           {
@@ -175,7 +175,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Section"
+                  "$ref": "#/components/schemas/New"
                 }
               }
             }
@@ -213,7 +213,7 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "New"
         ],
         "requestBody": {
           "description": "",
@@ -221,14 +221,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSection"
+                "$ref": "#/components/schemas/NewNew"
               }
             }
           }
         }
       }
     },
-    "/sections/count": {
+    "/news/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -280,12 +280,12 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "New"
         ],
         "parameters": []
       }
     },
-    "/sections/{_id}": {
+    "/news/{_id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -295,7 +295,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Section"
+                  "$ref": "#/components/schemas/New"
                 }
               }
             }
@@ -333,7 +333,7 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "New"
         ],
         "parameters": [
           {
@@ -357,7 +357,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Section"
+                  "$ref": "#/components/schemas/New"
                 }
               }
             }
@@ -395,7 +395,7 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "New"
         ],
         "requestBody": {
           "description": "",
@@ -403,7 +403,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSection"
+                "$ref": "#/components/schemas/NewNew"
               }
             }
           }
@@ -469,7 +469,7 @@
         },
         "summary": "",
         "tags": [
-          "Section"
+          "New"
         ],
         "parameters": [
           {
@@ -488,7 +488,7 @@
   },
   "components": {
     "schemas": {
-      "Section": {
+      "New": {
         "required": [
           "id"
         ],
@@ -496,34 +496,15 @@
           "id": {
             "type": "string"
           },
-          "Nom": {
+          "Titre": {
             "type": "string",
             "default": ""
           },
-          "background": {
-            "required": [
-              "id",
-              "Image"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "Image": {
-                "type": "string"
-              },
-              "pages": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "section": {
-                "type": "string"
-              }
-            }
+          "Description": {
+            "type": "string",
+            "default": ""
           },
-          "Logo": {
+          "Image": {
             "required": [
               "id",
               "name",
@@ -569,55 +550,35 @@
               }
             }
           },
-          "Titre": {
-            "type": "string",
-            "default": ""
-          },
-          "news": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "Titre": {
-                  "type": "string"
-                },
-                "Description": {
-                  "type": "string"
-                },
-                "Image": {
-                  "type": "string"
-                },
-                "section": {
+          "section": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Nom": {
+                "type": "string"
+              },
+              "background": {
+                "type": "string"
+              },
+              "Logo": {
+                "type": "string"
+              },
+              "Titre": {
+                "type": "string"
+              },
+              "news": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
-              }
-            }
-          },
-          "evenements": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "Titre": {
-                  "type": "string"
-                },
-                "Description": {
-                  "type": "string"
-                },
-                "Image": {
-                  "type": "string"
-                },
-                "section": {
+              },
+              "evenements": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
               }
@@ -625,30 +586,18 @@
           }
         }
       },
-      "NewSection": {
+      "NewNew": {
         "properties": {
-          "Nom": {
-            "type": "string",
-            "default": ""
-          },
-          "background": {
-            "type": "string"
-          },
           "Titre": {
             "type": "string",
             "default": ""
           },
-          "news": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "Description": {
+            "type": "string",
+            "default": ""
           },
-          "evenements": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "section": {
+            "type": "string"
           }
         }
       }
@@ -656,7 +605,7 @@
   },
   "tags": [
     {
-      "name": "Section"
+      "name": "New"
     }
   ]
 }

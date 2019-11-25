@@ -1,8 +1,8 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "evenement",
   "info": {
-    "name": "article",
+    "name": "evenement",
     "description": ""
   },
   "options": {
@@ -13,7 +13,7 @@
       "default": "",
       "type": "string"
     },
-    "Texte": {
+    "Description": {
       "default": "",
       "type": "text"
     },
@@ -25,7 +25,7 @@
     },
     "section": {
       "model": "section",
-      "via": "articles"
+      "via": "evenements"
     }
   }
 }
